@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+
+stoods = [
+'anthony',
+'brandon',
+'brian',
+'david',
+'david2',
+'elijah',
+'fuller',
+'joe',
+'juan',
+'moustafa',
+'patrick',
+'steven',
+'jonathon',
+]
+
+stoods.each do |stood|
+    User.create(username: stood, email: "#{stood}@#{stood}.com")
+end
