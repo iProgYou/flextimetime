@@ -5,12 +5,12 @@ class UsersController < ApplicationController
     def index
         # limit query string
         # debugger
-        users = User.all
+        @users = User.all
         if params[:limit]
             limit = params[:limit].to_i
-            render json: users[0...limit]
+            render :index
         else
-            render json: users
+            render :index
         end
     end
 
@@ -23,17 +23,19 @@ class UsersController < ApplicationController
         render json: user
     end
 
+    def new
+        @user = User.new
+        render :new
+    end
+
     def create
-        user = User.new(user_params)
-        if user.nil?
-            render json: 'user not found', status: 404
-            return nil
-        end
-        if user.save
+        @user = User.new(user_params)
+
+        if @user.save
             # redirect_to "/users/#{user.id}"
-            redirect_to user_url(user)
+            redirect_to users_url
         else
-            render json: user.errors.full_messages
+            render :new
         end
 
     end
