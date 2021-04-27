@@ -24,5 +24,5 @@ stoods = [
 ]
 
 stoods.each do |stood|
-    User.create(username: stood, email: "#{stood}@#{stood}.com")
+    User.create(username: stood, email: "#{stood}@#{stood}.com",password: '123456')
 end
