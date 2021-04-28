@@ -33,6 +33,7 @@ class UsersController < ApplicationController
 
         if @user.save
             # redirect_to "/users/#{user.id}"
+            login!(@user)
             redirect_to users_url
         else
             render :new
@@ -69,6 +70,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username,:email)
+        params.require(:user).permit(:username,:email,:password)
     end
 end
